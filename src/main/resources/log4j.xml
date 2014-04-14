@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%7r] %6p - %30.30c - %m \n"/>
+        </layout>
+    </appender>
+    <appender name="LOG-PROXY" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="file" value="logs/proxy.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m \n"/>
+        </layout>
+    </appender>
+    
+    <category name="com.fish.play.proxy.carrier.Flow" additivity="true">
+        <priority value="INFO"/>
+        <appender-ref ref="LOG-PROXY"/>
+    </category>
+    
+    <appender name="LOG-PROXY-NUMBER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="file" value="logs/proxy-num.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m \n"/>
+        </layout>
+    </appender>
+    
+    <category name="com.fish.play.proxy.ProxyDispatcher" additivity="true">
+        <priority value="INFO"/>
+        <appender-ref ref="LOG-PROXY-NUMBER"/>
+    </category>
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</log4j:configuration>

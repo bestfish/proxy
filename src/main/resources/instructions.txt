@@ -1,0 +1,21 @@
+1 点击 start.bat 则开启了代理服务
+
+2 代理的日志会记录在logs/proxy.log里面。 logs/proxy-num.log记录代理服务从开启到停止，代理数目
+
+3 点击 excel.bat 则将proxy.log转化成proxy.xlsx文件
+
+4 打开config/configuration.properties 可以手工配置：
+                                        #代理服务的监听端口
+                                        service_port=8088
+                                        #socket inputstream read()超时时间(ms)，0代表永不超时
+                                        socket_timeout=10000
+                                        #请求方法过滤开关
+                                        request_method_filter=true
+                                        #请求url过滤开关
+                                        request_url_filter=true
+
+                                        #要过滤掉的请求方法,以comma分隔多项
+                                        request_method_contents=CONNECT
+
+                                        #要过滤的请求内容,以comma分隔多项
+                                        request_url_contents=favicon.ico,360buyimg.com
